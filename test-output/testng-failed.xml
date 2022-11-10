@@ -6,9 +6,8 @@
       <class name="RemoveFromCart">
         <methods>
           <include name="TestShopping"/>
-          <include name="NumberItemsInCart"/>
+          <include name="RemoveItemFromCartTest"/>
           <include name="beforeSuite"/>
-          <include name="getResult"/>
         </methods>
       </class> <!-- RemoveFromCart -->
     </classes>

@@ -17,6 +17,7 @@ import core.readAllureTest;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Attachment;
 import pages.AssertionCompare;
+import pages.Cart;
 import pages.CheckOutPage;
 import pages.GetItemInfo;
 import pages.GoToURL;
@@ -128,6 +129,9 @@ public class shopingCartFinalProject {
 	public void allureResults() throws IOException {
 		readAllureTest allureReport = new readAllureTest();
 		allureReport.allureTest();
+		
+		
 	}
+	
 
 }

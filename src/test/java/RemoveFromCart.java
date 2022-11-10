@@ -97,31 +97,14 @@ public class RemoveFromCart {
 		ActualNumberOfItems = cartInfo.ItemsInCart();
 
 	}
-	@Test(dependsOnMethods = {"TestShopping"},testName = "Create output CSV File of collected data")
-	public void getResult() {
-		List<String[]> data = new ArrayList<String[]>();
-		for(ArrayList<String> row: outputData) {
-			String[] row_data = new String[row.size()];
-			for(int i= 0;i<row.size();i++) {
-				row_data[i] = row.get(i);
-			}
-			data.add(row_data);
-		}
-		String[] headers = new String[outputHeaders.size()];
-		for(int i= 0;i<outputHeaders.size();i++) {
-			headers[i] = outputHeaders.get(i);
-		}
-		WriteCsvFile.writeDataLineByLine("outputSearchResults.csv", data, headers);
-
-	}
 	@Test(dependsOnMethods = {"TestShopping"}, testName = "Remove Item from Cart")
 	public void RemoveItemFromCartTest() throws Exception {
 		Cart Item = new Cart(driver);
+		int countItemsBeforeRemove = Item.ItemsInCart();
 		Item.remvoeItem();
-		Item.remvoeItem();
-
-
-
+		int expectedValue = countItemsBeforeRemove-1;
+		int actualValue = Item.ItemsInCart();
+		Assert.assertEquals(actualValue, expectedValue, "If test pass, it means the remvoing process is done right");
 	}
 
 }

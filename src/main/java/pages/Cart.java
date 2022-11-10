@@ -10,6 +10,9 @@ public class Cart {
 	WebDriver driver;
 	String countRealNumberOfItemsInCart ="//span[@class=\"counter-number\"]";
 	String TotalPriceAndShipping = "//span[@class=\"price\"]";
+	String showCart= "//a[@class=\"action showcart\"]";
+	String countItemsInCart = "//a[@title=\"Remove item\"]";
+	String removeItem = "//button[@data-role=\"action\"]";
 
 	public Cart(WebDriver driver) {
 		this.driver = driver;
@@ -22,7 +25,7 @@ public class Cart {
 			NumberOfPurchasedItems = Integer.parseInt(getNumberOfPurchasedItems);
 			Thread.sleep(1000);
 		}catch(Exception e) {
-			System.out.println("Couldn't Read Cart value");
+			System.out.println("Couldn't Read Cart value, Cart is empty [0] items");
 		}
 		return NumberOfPurchasedItems;
 
@@ -39,22 +42,22 @@ public class Cart {
 		GoToURL HomePage = new GoToURL(driver);
 		HomePage.HomePage();
 		Thread.sleep(3000);
-		driver.findElement(By.xpath("//a[@class=\"action showcart\"]")).click();
+		driver.findElement(By.xpath(showCart)).click();
 		Thread.sleep(3000);
-		List<WebElement> ItemsInCart = driver.findElements(By.xpath("//a[@title=\"Remove item\"]"));
+		List<WebElement> ItemsInCart = driver.findElements(By.xpath(countItemsInCart));
 		ItemsInCart.size();
 		try {
 			System.out.println(" The Number of Items in Cart before removing item is: "+ItemsInCart.size());
 			ItemsInCart.get(0).click();
 			Thread.sleep(3000);
-			driver.findElements(By.xpath("//button[@data-role=\"action\"]")).get(1).click();
+			driver.findElements(By.xpath(removeItem)).get(1).click();
 			Thread.sleep(3000);
 
 		}catch(Exception e) {
-			System.out.println("No Items in Cart");
+			System.out.println("No Items in Cart to remove");
 		}
 		HomePage.HomePage();
-		System.out.println(" The actual number of items in Cart is: "+driver.findElements(By.xpath("//a[@title=\"Remove item\"]")).size());
+		System.out.println(" The actual number of items in Cart is: "+driver.findElements(By.xpath(countItemsInCart)).size());
 
 	}
 
