@@ -14,6 +14,7 @@ import pages.Cart;
 import pages.CheckOutPage;
 import pages.GetItemInfo;
 import core.GoToURL;
+import core.LoadingTime;
 import pages.InputCsvFile;
 import pages.Order;
 import pages.PageActions;
@@ -35,12 +36,9 @@ public class ShoppingCartFinalProject extends BaseClass {
 
 		System.out.println("Item search for: " + ItemName );
 		System.out.println("- - - - - - - - - - - - - - - - -");
-		Thread.sleep(3000);
 		PageActions make = new PageActions(driver);
 		make.setSearchBoxValue(ItemName);
-		Thread.sleep(1000);
 		make.clickOnFirstItem();
-		Thread.sleep(3000);
 		make.pickColorSizeQuantity();
 
 		GetItemInfo Item = new GetItemInfo(driver);
@@ -52,7 +50,6 @@ public class ShoppingCartFinalProject extends BaseClass {
 		
 		Allure.addAttachment("ScreenShot"+itemTitle, new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
 
-		Thread.sleep(3000);
 		ArrayList<String> results = new ArrayList<String>();
 		results.add(ItemName);
 		results.add(itemTitle);
@@ -81,10 +78,11 @@ public class ShoppingCartFinalProject extends BaseClass {
 	public void fillCheckOutForm() throws Exception {
 		GoToURL goTo = new GoToURL(driver);
 		goTo.CheckOutPage();
+		LoadingTime.loadingTime();
 
 		CheckOutPage checkOutForm = new CheckOutPage(driver);
 		checkOutForm.fillCheckOutForm();
-		Thread.sleep(3000);
+//		LoadingTime.loadingTime();
 
 		//Get cost of items and shipping rate from CSV file - ExpectedValue
 		Cart sales = new Cart(driver);

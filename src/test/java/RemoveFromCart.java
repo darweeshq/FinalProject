@@ -7,6 +7,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import core.GetData;
+import core.LoadingTime;
 import core.TakeScreenShot;
 import io.qameta.allure.Allure;
 import pages.Cart;
@@ -22,18 +23,19 @@ public class RemoveFromCart extends BaseClass {
 	}	
 	@Test (dataProvider = "SearchItems",testName = "Purchase items and add to cart")
 	public void TestShopping(String ItemName) throws Exception {
-
 		TakeScreenShot takeScr = new TakeScreenShot(driver);
 		takeScr.takeScreenShot("Shirt-shot-"+ItemName+".jpg");
+		LoadingTime time = new LoadingTime(driver);
 
 		System.out.println("Item search for: " + ItemName );
 		System.out.println("- - - - - - - - - - - - - - - - -");
-		Thread.sleep(3000);
+//		Thread.sleep(3000);
 		PageActions make = new PageActions(driver);
 		make.setSearchBoxValue(ItemName);
-		Thread.sleep(1000);
+//		Thread.sleep(1000);
 		make.clickOnFirstItem();
-		Thread.sleep(3000);
+		LoadingTime.loadingTime();
+//		Thread.sleep(3000);
 		make.pickColorSizeQuantity();
 
 		GetItemInfo Item = new GetItemInfo(driver);
@@ -43,7 +45,7 @@ public class RemoveFromCart extends BaseClass {
 		takeScr.takeScreenShot("Shirtshot-"+itemTitle+".jpg");
 		Allure.addAttachment("ScreenShot"+itemTitle, new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
 
-		Thread.sleep(3000);
+//		Thread.sleep(3000);
 		ArrayList<String> results = new ArrayList<String>();
 		results.add(ItemName);
 		results.add(itemTitle);

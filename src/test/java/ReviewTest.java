@@ -4,6 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
+import core.LoadingTime;
 import core.OpenBrowsers;
 import pages.Reviews;
 
@@ -15,6 +16,8 @@ public class ReviewTest {
 	@BeforeSuite
 	public void beforeSuite() throws InterruptedException, IOException {
 		driver = OpenBrowsers.openchromeWithOptions();
+		LoadingTime time = new LoadingTime(driver);
+
 		
 	}
 	@Test

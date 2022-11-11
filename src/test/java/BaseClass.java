@@ -9,6 +9,7 @@ import core.OpenBrowsers;
 import core.readAllureTest;
 import io.qameta.allure.Attachment;
 import core.GoToURL;
+import core.LoadingTime;
 
 public class BaseClass {
 	
@@ -18,16 +19,20 @@ public class BaseClass {
 		int ActualNumberOfItems;
 
 
+
 		@BeforeSuite
 		public void beforeSuite() throws InterruptedException, IOException {
 			driver = OpenBrowsers.openchromeWithOptions();
+			LoadingTime time = new LoadingTime(driver);
+
 			//		driver = OpenBrowsers.openFFWithOptions();
 			outputHeaders.add("Input Shirt search field");
 			outputHeaders.add("Item Name");
 			outputHeaders.add("Item Price");
 			GoToURL goTo = new GoToURL(driver);
 			goTo.HomePage();
-			
+//			time.loadingTime();
+
 			
 			//		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 

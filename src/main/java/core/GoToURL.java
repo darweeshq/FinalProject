@@ -12,14 +12,14 @@ public class GoToURL {
 	}
 	public void HomePage() throws InterruptedException {
 		driver.get(homePageUrl);
-		Thread.sleep(3000);
+		LoadingTime.loadingTime();
 	}
 	public void CheckOutPage() throws InterruptedException {
 		driver.get(CheckOutLink);
-		Thread.sleep(3000);
+		LoadingTime.loadingTime();
 	}
 	public void reviewPage() throws InterruptedException {
 		driver.get(reviewProduct);
-		Thread.sleep(3000);
+		LoadingTime.loadingTime();
 	}
 }

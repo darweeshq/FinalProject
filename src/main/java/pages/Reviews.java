@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
 import core.GoToURL;
+import core.LoadingTime;
 
 public class Reviews {
 		WebDriver driver;
@@ -22,16 +23,18 @@ public class Reviews {
 		}
 		public String review() throws InterruptedException {
 
-			Thread.sleep(5000);
+//			Thread.sleep(5000);
 			GoToURL go = new GoToURL(driver);
 			go.reviewPage();
+
+//			LoadingTime time = new LoadingTime(driver);
 			WebElement reviewSection = driver.findElement(By.xpath(reviewSectionXpath));
 			reviewSection.click();
-			Thread.sleep(5000);
+			LoadingTime.loadingTime();
 			Actions action = new Actions(driver);
 			WebElement stars = driver.findElement(By.xpath(starsXpath));
 			action.moveToElement(stars).perform();
-			Thread.sleep(3000);
+//			Thread.sleep(3000);
 			action.click(stars).perform();
 			WebElement name = driver.findElement(By.name(nameName));
 			name.click();
@@ -42,10 +45,10 @@ public class Reviews {
 			WebElement reviewfield = driver.findElement(By.id(reviewFieldId));
 			reviewfield.click();
 			reviewfield.sendKeys("Great value, received on time, definitely will buy from this store again ");
-			Thread.sleep(3000);
+//			Thread.sleep(3000);
 			WebElement submit = driver.findElement(By.xpath(submitXpath));
 			submit.click();
-			Thread.sleep(4000);
+			LoadingTime.loadingTime();
 			WebElement getText = driver.findElement(By.xpath(getTextXpath));
 			return getText.getText();
 			

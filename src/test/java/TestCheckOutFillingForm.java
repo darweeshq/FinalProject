@@ -13,6 +13,7 @@ import pages.AssertionCompare;
 import pages.CheckOutPage;
 import pages.GetItemInfo;
 import core.GoToURL;
+import core.LoadingTime;
 import pages.PageActions;
 
 @Test
@@ -32,12 +33,12 @@ public class TestCheckOutFillingForm extends BaseClass {
 
 		System.out.println("Item search for: " + ItemName );
 		System.out.println("- - - - - - - - - - - - - - - - -");
-		Thread.sleep(3000);
+		LoadingTime.loadingTime();
 		PageActions make = new PageActions(driver);
 		make.setSearchBoxValue(ItemName);
-		Thread.sleep(1000);
+		LoadingTime.loadingTime();
 		make.clickOnFirstItem();
-		Thread.sleep(3000);
+		LoadingTime.loadingTime();
 		make.pickColorSizeQuantity();
 
 		GetItemInfo Item = new GetItemInfo(driver);
@@ -47,7 +48,7 @@ public class TestCheckOutFillingForm extends BaseClass {
 		takeScr.takeScreenShot("Shirtshot-"+itemTitle+".jpg");
 		Allure.addAttachment("ScreenShot"+itemTitle, new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
 
-		Thread.sleep(3000);
+		LoadingTime.loadingTime();
 		ArrayList<String> results = new ArrayList<String>();
 		results.add(ItemName);
 		results.add(itemTitle);
@@ -59,33 +60,33 @@ public class TestCheckOutFillingForm extends BaseClass {
 	public void fillCheckOutFormEmailTest() throws Exception {
 		GoToURL goTo = new GoToURL(driver);
 		goTo.CheckOutPage();
-		Thread.sleep(10000);
+		LoadingTime.loadingTime();
 		CheckOutPage checkOutForm = new CheckOutPage(driver);
 		checkOutForm.fillCheckOutFormTestEmail();
-		Thread.sleep(3000);
+		LoadingTime.loadingTime();
 		String ExpectedValue = "valid email";
 		AssertionCompare Email = new AssertionCompare(driver);
 		Email.emailAssertionCompare().contains(ExpectedValue);
 		if((Email.emailAssertionCompare().contains(ExpectedValue))==true) {
 			System.out.println("The entered value of Email is not correct");
 		}
-		Assert.assertFalse(Email.emailAssertionCompare().contains(ExpectedValue),"The entered value of Email is not correct");
+		Assert.assertTrue(Email.emailAssertionCompare().contains(ExpectedValue),"The entered value of Email is not correct");
 	}
 	@Test(dependsOnMethods = {"TestShopping"}, testName = "Test phone number")
 	public void fillCheckOutFormPhoneTest() throws Exception {
 		GoToURL goTo = new GoToURL(driver);
 		goTo.CheckOutPage();
-		Thread.sleep(10000);
+		LoadingTime.loadingTime();
 		CheckOutPage checkOutForm = new CheckOutPage(driver);
 		checkOutForm.fillCheckOutFormPhoneTest();
-		Thread.sleep(7000);
-		String ExpectedValue = "Payment Method";
+		LoadingTime.loadingTime();
+		String ExpectedValue = "Valid Number";
 		AssertionCompare Phone = new AssertionCompare(driver);
 		Phone.phoneAssertionCompare().contains(ExpectedValue);
 		if((Phone.phoneAssertionCompare().contains(ExpectedValue))==true) {
 			System.out.println("The entered value of Phone is not correct");
 		}
-		Assert.assertFalse(Phone.phoneAssertionCompare().contains(ExpectedValue),"The entered value of Phone is not correct");
+		Assert.assertTrue(Phone.phoneAssertionCompare().contains(ExpectedValue),"The entered value of Phone is not correct");
 	}	
 
 }
