@@ -3,7 +3,7 @@ package pages;
 import java.util.List;
 
 import core.ReadCsvFile;
-
+//Counts the number of items in the CSV file
 public class InputCsvFile {
 	String InputCsvFilePath = "inputSearch.csv";
 	public int CountMethod() throws Exception {

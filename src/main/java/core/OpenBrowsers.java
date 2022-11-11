@@ -19,7 +19,6 @@ public class OpenBrowsers {
 		System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver.exe");
 		String downloadFilepath = "downloads";
 		File file = new File(downloadFilepath);
-		
 		HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
 		chromePrefs.put("profile.default_content_settings.popups", 0);
 		chromePrefs.put("download.default_directory", file.getAbsolutePath());
@@ -28,6 +27,7 @@ public class OpenBrowsers {
 //		options.addArguments("--headless");
 		options.addArguments("--disable-infobars");
 		driver = new ChromeDriver(options);
+		driver.manage().window().maximize();
 		return driver;
 	}
 	

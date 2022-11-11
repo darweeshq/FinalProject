@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Failed suite [Booking Test]" guice-stage="DEVELOPMENT">
-  <test thread-count="5" name="checkout(failed)">
+  <test thread-count="5" name="Final Project(failed)">
     <classes>
-      <class name="shopingCartFinalProject">
+      <class name="ShoppingCartFinalProject">
         <methods>
           <include name="beforeSuite"/>
+          <include name="TestShopping"/>
           <include name="fillCheckOutForm"/>
+          <include name="getResult"/>
+          <include name="allureResults"/>
+          <include name="NumberItemsInCart"/>
         </methods>
-      </class> <!-- shopingCartFinalProject -->
+      </class> <!-- ShoppingCartFinalProject -->
     </classes>
-  </test> <!-- checkout(failed) -->
+  </test> <!-- Final Project(failed) -->
 </suite> <!-- Failed suite [Booking Test] -->
