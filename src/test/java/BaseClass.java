@@ -28,18 +28,11 @@ public class BaseClass{
 			driver = OpenBrowsers.openchromeWithOptions();
 			LoadingTime time = new LoadingTime(driver);
 
-			//		driver = OpenBrowsers.openFFWithOptions();
 			outputHeaders.add("Input Shirt search field");
 			outputHeaders.add("Item Name");
 			outputHeaders.add("Item Price");
 			GoToURL goTo = new GoToURL(driver);
 			goTo.HomePage();
-//			time.loadingTime();
-
-
-			
-			//		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-
 		}
 		@Attachment(value = "Screenshot", type = "image/png")
 		public byte[] screenshot() {

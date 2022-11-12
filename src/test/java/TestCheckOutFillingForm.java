@@ -9,12 +9,13 @@ import org.testng.annotations.Test;
 import core.GetData;
 import core.TakeScreenShot;
 import io.qameta.allure.Allure;
-import pages.AssertionCompare;
-import pages.CheckOutPage;
-import pages.GetItemInfo;
+import pages.FeildBoxErrorText;
+import pages.ItemPage;
 import core.GoToURL;
 import core.LoadingTime;
-import pages.PageActions;
+import pages.SearchBox;
+import pages.SearchResult;
+import pages.ShippingForm;
 
 @Test
 public class TestCheckOutFillingForm extends BaseClass {
@@ -34,14 +35,16 @@ public class TestCheckOutFillingForm extends BaseClass {
 		System.out.println("Item search for: " + ItemName );
 		System.out.println("- - - - - - - - - - - - - - - - -");
 		LoadingTime.loadingTime();
-		PageActions make = new PageActions(driver);
-		make.setSearchBoxValue(ItemName);
+		ItemPage make = new ItemPage(driver);
+		SearchBox type = new SearchBox(driver);
+		type.setSearchBoxValue(ItemName);
 		LoadingTime.loadingTime();
-		make.clickOnFirstItem();
-		LoadingTime.loadingTime();
-		make.pickColorSizeQuantity();
+		SearchResult search = new SearchResult(driver);
+		search.clickOnFirstItem();
+//		LoadingTime.loadingTime();
+		make.pickColorSizeSubmit();
 
-		GetItemInfo Item = new GetItemInfo(driver);
+		ItemPage Item = new ItemPage(driver);
 		String itemTitle = Item.getItemTitle();
 		String itemPrice = Item.getItemPrice();
 
@@ -61,11 +64,11 @@ public class TestCheckOutFillingForm extends BaseClass {
 		GoToURL goTo = new GoToURL(driver);
 		goTo.CheckOutPage();
 		LoadingTime.loadingTime();
-		CheckOutPage checkOutForm = new CheckOutPage(driver);
-		checkOutForm.fillCheckOutFormTestEmail();
+		ShippingForm checkOutForm = new ShippingForm(driver);
+		checkOutForm.fillShippingFormTestEmail();
 		LoadingTime.loadingTime();
 		String ExpectedValue = "valid email";
-		AssertionCompare Email = new AssertionCompare(driver);
+		FeildBoxErrorText Email = new FeildBoxErrorText(driver);
 		Email.emailAssertionCompare().contains(ExpectedValue);
 		if((Email.emailAssertionCompare().contains(ExpectedValue))==true) {
 			System.out.println("The entered value of Email is not correct");
@@ -77,11 +80,11 @@ public class TestCheckOutFillingForm extends BaseClass {
 		GoToURL goTo = new GoToURL(driver);
 		goTo.CheckOutPage();
 		LoadingTime.loadingTime();
-		CheckOutPage checkOutForm = new CheckOutPage(driver);
-		checkOutForm.fillCheckOutFormPhoneTest();
+		ShippingForm checkOutForm = new ShippingForm(driver);
+		checkOutForm.fillShippingFormPhoneTest();
 		LoadingTime.loadingTime();
 		String ExpectedValue = "Valid Number";
-		AssertionCompare Phone = new AssertionCompare(driver);
+		FeildBoxErrorText Phone = new FeildBoxErrorText(driver);
 		Phone.phoneAssertionCompare().contains(ExpectedValue);
 		if((Phone.phoneAssertionCompare().contains(ExpectedValue))==true) {
 			System.out.println("The entered value of Phone is not correct");

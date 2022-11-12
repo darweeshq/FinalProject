@@ -15,13 +15,13 @@ import core.TakeScreenShot;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Attachment;
 import pages.Cart;
-import pages.CheckOutPage;
-import pages.GetItemInfo;
 import core.GoToURL;
-import core.LoadingTime;
-import pages.InputCsvFile;
-import pages.Order;
-import pages.PageActions;
+import core.InputCsvFile;
+import core.OrderCost;
+import pages.ItemPage;
+import pages.SearchBox;
+import pages.SearchResult;
+import pages.ShippingForm;
 
 @Test
 public class ShoppingCartFinalProject extends BaseClass {
@@ -40,13 +40,14 @@ public class ShoppingCartFinalProject extends BaseClass {
 
 		System.out.println("Item search for: " + ItemName );
 		System.out.println("- - - - - - - - - - - - - - - - -");
-		PageActions make = new PageActions(driver);
-		make.setSearchBoxValue(ItemName);
-		make.clickOnFirstItem();
-		LoadingTime.loadingTime();
-		make.pickColorSizeQuantity();
+		ItemPage make = new ItemPage(driver);
+		SearchBox type = new SearchBox(driver);
+		type.setSearchBoxValue(ItemName);
+		SearchResult search = new SearchResult(driver);
+		search.clickOnFirstItem();;
+		make.pickColorSizeSubmit();
 
-		GetItemInfo Item = new GetItemInfo(driver);
+		ItemPage Item = new ItemPage(driver);
 		String itemTitle = Item.getItemTitle();
 		String itemPrice = Item.getItemPrice();
 		
@@ -82,21 +83,19 @@ public class ShoppingCartFinalProject extends BaseClass {
 	    Allure.addAttachment(resultFile.getName(), FileUtils.openInputStream(resultFile));
 	}
 	@Test(dependsOnMethods = {"getResult"}, testName = "Compare total cost of Actual purchase and Expected")
-	public void fillCheckOutForm() throws Exception {
+	public void fillShippingFormTest() throws Exception {
 		GoToURL goTo = new GoToURL(driver);
 		goTo.CheckOutPage();
-//		LoadingTime.loadingTime();
 
-		CheckOutPage checkOutForm = new CheckOutPage(driver);
-		checkOutForm.fillCheckOutForm();
-//		LoadingTime.loadingTime();
+		ShippingForm checkOutForm = new ShippingForm(driver);
+		checkOutForm.fillShippingForm();;
 
 		//Get cost of items and shipping rate from CSV file - ExpectedValue
 		Cart sales = new Cart(driver);
 		double actualValue = sales.getTotalCartSalesIncludShipping();
 
 		//Get cost of items and shipping rate from Website - RealValue
-		Order orderPrice = new Order();
+		OrderCost orderPrice = new OrderCost();
 		double ExpectedValue = orderPrice.ItemsSumValue();
 
 		System.out.println("Expected value of purchased items including shipping : " +"$"+ExpectedValue);

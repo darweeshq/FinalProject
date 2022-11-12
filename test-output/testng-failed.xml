@@ -3,15 +3,16 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="TestCheckOutFillingForm">
+      <class name="ShoppingCartFinalProject">
         <methods>
           <include name="beforeSuite"/>
-          <include name="fillCheckOutFormEmailTest"/>
           <include name="TestShopping"/>
-          <include name="fillCheckOutFormPhoneTest"/>
+          <include name="fillShippingFormTest"/>
+          <include name="getResult"/>
           <include name="allureResults"/>
+          <include name="NumberItemsInCart"/>
         </methods>
-      </class> <!-- TestCheckOutFillingForm -->
+      </class> <!-- ShoppingCartFinalProject -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

@@ -2,16 +2,16 @@
 <testng-results ignored="0" total="6" passed="6" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2022-11-12T19:29:12 IST" name="Default suite" finished-at="2022-11-12T19:30:32 IST" duration-ms="79561">
+  <suite started-at="2022-11-12T21:39:22 IST" name="Default suite" finished-at="2022-11-12T21:41:15 IST" duration-ms="113099">
     <groups>
     </groups>
-    <test started-at="2022-11-12T19:29:12 IST" name="Default test" finished-at="2022-11-12T19:30:32 IST" duration-ms="79561">
+    <test started-at="2022-11-12T21:39:22 IST" name="Default test" finished-at="2022-11-12T21:41:15 IST" duration-ms="113099">
       <class name="ShoppingCartFinalProject">
-        <test-method is-config="true" signature="beforeSuite()[pri:0, instance:ShoppingCartFinalProject@60410cd]" started-at="2022-11-12T19:29:05 IST" name="beforeSuite" finished-at="2022-11-12T19:29:12 IST" duration-ms="7447" status="PASS">
+        <test-method is-config="true" signature="beforeSuite()[pri:0, instance:ShoppingCartFinalProject@60410cd]" started-at="2022-11-12T21:39:09 IST" name="beforeSuite" finished-at="2022-11-12T21:39:22 IST" duration-ms="12968" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeSuite -->
-        <test-method signature="TestShopping(java.lang.String)[pri:0, instance:ShoppingCartFinalProject@60410cd]" started-at="2022-11-12T19:29:12 IST" name="TestShopping" data-provider="SearchItems" finished-at="2022-11-12T19:29:30 IST" duration-ms="17830" status="PASS">
+        <test-method signature="TestShopping(java.lang.String)[pri:0, instance:ShoppingCartFinalProject@60410cd]" started-at="2022-11-12T21:39:22 IST" name="TestShopping" data-provider="SearchItems" finished-at="2022-11-12T21:39:45 IST" duration-ms="23327" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -22,7 +22,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TestShopping -->
-        <test-method signature="TestShopping(java.lang.String)[pri:0, instance:ShoppingCartFinalProject@60410cd]" started-at="2022-11-12T19:29:30 IST" name="TestShopping" data-provider="SearchItems" finished-at="2022-11-12T19:29:51 IST" duration-ms="21275" status="PASS">
+        <test-method signature="TestShopping(java.lang.String)[pri:0, instance:ShoppingCartFinalProject@60410cd]" started-at="2022-11-12T21:39:45 IST" name="TestShopping" data-provider="SearchItems" finished-at="2022-11-12T21:40:15 IST" duration-ms="29587" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -33,7 +33,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TestShopping -->
-        <test-method signature="TestShopping(java.lang.String)[pri:0, instance:ShoppingCartFinalProject@60410cd]" started-at="2022-11-12T19:29:51 IST" name="TestShopping" data-provider="SearchItems" finished-at="2022-11-12T19:30:09 IST" duration-ms="17651" status="PASS">
+        <test-method signature="TestShopping(java.lang.String)[pri:0, instance:ShoppingCartFinalProject@60410cd]" started-at="2022-11-12T21:40:15 IST" name="TestShopping" data-provider="SearchItems" finished-at="2022-11-12T21:40:45 IST" duration-ms="30275" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -44,19 +44,19 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TestShopping -->
-        <test-method signature="NumberItemsInCart()[pri:0, instance:ShoppingCartFinalProject@60410cd]" started-at="2022-11-12T19:30:09 IST" name="NumberItemsInCart" finished-at="2022-11-12T19:30:09 IST" depends-on-methods="ShoppingCartFinalProject.TestShopping" duration-ms="4" status="PASS">
+        <test-method signature="NumberItemsInCart()[pri:0, instance:ShoppingCartFinalProject@60410cd]" started-at="2022-11-12T21:40:45 IST" name="NumberItemsInCart" finished-at="2022-11-12T21:40:45 IST" depends-on-methods="ShoppingCartFinalProject.TestShopping" duration-ms="8" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- NumberItemsInCart -->
-        <test-method signature="getResult()[pri:0, instance:ShoppingCartFinalProject@60410cd]" started-at="2022-11-12T19:30:09 IST" name="getResult" finished-at="2022-11-12T19:30:09 IST" depends-on-methods="ShoppingCartFinalProject.NumberItemsInCart" duration-ms="12" status="PASS">
+        <test-method signature="getResult()[pri:0, instance:ShoppingCartFinalProject@60410cd]" started-at="2022-11-12T21:40:45 IST" name="getResult" finished-at="2022-11-12T21:40:45 IST" depends-on-methods="ShoppingCartFinalProject.NumberItemsInCart" duration-ms="21" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getResult -->
-        <test-method signature="fillCheckOutForm()[pri:0, instance:ShoppingCartFinalProject@60410cd]" started-at="2022-11-12T19:30:09 IST" name="fillCheckOutForm" finished-at="2022-11-12T19:30:32 IST" depends-on-methods="ShoppingCartFinalProject.getResult" duration-ms="22683" status="PASS">
+        <test-method signature="fillShippingFormTest()[pri:0, instance:ShoppingCartFinalProject@60410cd]" started-at="2022-11-12T21:40:45 IST" name="fillShippingFormTest" finished-at="2022-11-12T21:41:15 IST" depends-on-methods="ShoppingCartFinalProject.getResult" duration-ms="29530" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- fillCheckOutForm -->
-        <test-method is-config="true" signature="allureResults()[pri:0, instance:ShoppingCartFinalProject@60410cd]" started-at="2022-11-12T19:30:32 IST" name="allureResults" finished-at="2022-11-12T19:30:32 IST" duration-ms="5" status="PASS">
+        </test-method> <!-- fillShippingFormTest -->
+        <test-method is-config="true" signature="allureResults()[pri:0, instance:ShoppingCartFinalProject@60410cd]" started-at="2022-11-12T21:41:15 IST" name="allureResults" finished-at="2022-11-12T21:41:15 IST" duration-ms="6" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- allureResults -->

@@ -1,5 +1,7 @@
 import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
+
+
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.testng.Assert;
@@ -11,8 +13,9 @@ import core.LoadingTime;
 import core.TakeScreenShot;
 import io.qameta.allure.Allure;
 import pages.Cart;
-import pages.GetItemInfo;
-import pages.PageActions;
+import pages.ItemPage;
+import pages.SearchBox;
+import pages.SearchResult;
 
 @Test
 public class RemoveFromCart extends BaseClass {
@@ -25,27 +28,23 @@ public class RemoveFromCart extends BaseClass {
 	public void TestShopping(String ItemName) throws Exception {
 		TakeScreenShot takeScr = new TakeScreenShot(driver);
 		takeScr.takeScreenShot("Shirt-shot-"+ItemName+".jpg");
-//		LoadingTime time = new LoadingTime(driver);
 
 		System.out.println("Item search for: " + ItemName );
 		System.out.println("- - - - - - - - - - - - - - - - -");
-//		Thread.sleep(3000);
-		PageActions make = new PageActions(driver);
-		make.setSearchBoxValue(ItemName);
-//		Thread.sleep(1000);
-		make.clickOnFirstItem();
-		LoadingTime.loadingTime();
-//		Thread.sleep(3000);
-		make.pickColorSizeQuantity();
+		ItemPage make = new ItemPage(driver);
+		SearchBox type = new SearchBox(driver);
+		type.setSearchBoxValue(ItemName);
+		SearchResult search = new SearchResult(driver);
+		search.clickOnFirstItem();
+		make.pickColorSizeSubmit();
 
-		GetItemInfo Item = new GetItemInfo(driver);
+		ItemPage Item = new ItemPage(driver);
 		String itemTitle = Item.getItemTitle();
 		String itemPrice = Item.getItemPrice();
 
 		takeScr.takeScreenShot("Shirtshot-"+itemTitle+".jpg");
 		Allure.addAttachment("ScreenShot"+itemTitle, new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
 
-//		Thread.sleep(3000);
 		ArrayList<String> results = new ArrayList<String>();
 		results.add(ItemName);
 		results.add(itemTitle);
