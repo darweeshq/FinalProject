@@ -25,7 +25,7 @@ public class RemoveFromCart extends BaseClass {
 	public void TestShopping(String ItemName) throws Exception {
 		TakeScreenShot takeScr = new TakeScreenShot(driver);
 		takeScr.takeScreenShot("Shirt-shot-"+ItemName+".jpg");
-		LoadingTime time = new LoadingTime(driver);
+//		LoadingTime time = new LoadingTime(driver);
 
 		System.out.println("Item search for: " + ItemName );
 		System.out.println("- - - - - - - - - - - - - - - - -");

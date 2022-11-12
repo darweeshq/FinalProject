@@ -11,16 +11,20 @@ public class CheckOutPage{
 	WebDriver driver;
 	public CheckOutPage(WebDriver driver) {
 		this.driver = driver;
+
 	}
 	public void fillCheckOutForm() throws InterruptedException {
 		LoadingTime.loadingTime();
-
+        
 		List<WebElement> Email = driver.findElements(By.xpath("//input[@type=\"email\"]"));
 		Email.get(1).click();
 		Email.get(1).clear();
 		Email.get(1).sendKeys("darweeshq@gmail.com");
 		Thread.sleep(300);
 
+		WebElement Country = driver.findElement(By.xpath("//option[@data-title=\"Israel\"]"));
+		Country.click();
+		
 		WebElement firstName = driver.findElement(By.name("firstname"));
 		firstName.click();
 		firstName.clear();
@@ -56,10 +60,6 @@ public class CheckOutPage{
 		postCode.clear();
 		postCode.sendKeys("20777");
 		Thread.sleep(300);
-
-		WebElement Country = driver.findElement(By.xpath("//option[@data-title=\"Israel\"]"));
-		Country.click();
-		LoadingTime.loadingTime();
 
 		WebElement phone = driver.findElement(By.name("telephone"));
 		phone.click();
@@ -78,6 +78,9 @@ public class CheckOutPage{
 		Email.get(1).click();
 		Email.get(1).sendKeys("darweeshqgmail.com");
 		Thread.sleep(300);
+		
+		WebElement Country = driver.findElement(By.xpath("//option[@data-title=\"Israel\"]"));
+		Country.click();
 
 		WebElement firstName = driver.findElement(By.name("firstname"));
 		firstName.click();
@@ -109,14 +112,9 @@ public class CheckOutPage{
 		postCode.sendKeys("20777");
 		Thread.sleep(300);
 
-		WebElement Country = driver.findElement(By.xpath("//option[@data-title=\"Israel\"]"));
-		Country.click();
-		LoadingTime.loadingTime();
-
 		WebElement phone = driver.findElement(By.name("telephone"));
 		phone.click();
 		phone.sendKeys("0525768719");
-		LoadingTime.loadingTime();
 
 		WebElement submitDetails = driver.findElement(By.xpath("//span[@data-bind=\"i18n: 'Next'\"]"));
 		submitDetails.click();
@@ -131,6 +129,9 @@ public class CheckOutPage{
 		Email.get(1).clear();
 		Email.get(1).sendKeys("darweeshq@gmail.com");
 		Thread.sleep(300);
+		
+		WebElement Country = driver.findElement(By.xpath("//option[@data-title=\"Israel\"]"));
+		Country.click();
 
 		WebElement firstName = driver.findElement(By.name("firstname"));
 		firstName.click();
@@ -168,15 +169,10 @@ public class CheckOutPage{
 		postCode.sendKeys("20777");
 		Thread.sleep(300);
 
-		WebElement Country = driver.findElement(By.xpath("//option[@data-title=\"Israel\"]"));
-		Country.click();
-		LoadingTime.loadingTime();
-
 		WebElement phone = driver.findElement(By.name("telephone"));
 		phone.click();
 		phone.clear();
 		phone.sendKeys("A0525768719");
-		LoadingTime.loadingTime();
 
 		WebElement submitDetails = driver.findElement(By.xpath("//span[@data-bind=\"i18n: 'Next'\"]"));
 		submitDetails.click();

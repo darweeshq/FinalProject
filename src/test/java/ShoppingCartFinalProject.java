@@ -1,5 +1,9 @@
 import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.testng.Assert;
@@ -39,6 +43,7 @@ public class ShoppingCartFinalProject extends BaseClass {
 		PageActions make = new PageActions(driver);
 		make.setSearchBoxValue(ItemName);
 		make.clickOnFirstItem();
+		LoadingTime.loadingTime();
 		make.pickColorSizeQuantity();
 
 		GetItemInfo Item = new GetItemInfo(driver);
@@ -70,15 +75,17 @@ public class ShoppingCartFinalProject extends BaseClass {
 
 	}
 	@Test(dependsOnMethods = {"NumberItemsInCart"},testName = "Create output CSV File of collected data")
-	public void getResult() {
+	public void getResult() throws IOException {
 		CsvResultFile setData = new CsvResultFile(outputHeaders, outputData);
 		setData.csvResultFile("outputSearchResults.csv");
+		File resultFile = new File( "outputSearchResults.csv");
+	    Allure.addAttachment(resultFile.getName(), FileUtils.openInputStream(resultFile));
 	}
 	@Test(dependsOnMethods = {"getResult"}, testName = "Compare total cost of Actual purchase and Expected")
 	public void fillCheckOutForm() throws Exception {
 		GoToURL goTo = new GoToURL(driver);
 		goTo.CheckOutPage();
-		LoadingTime.loadingTime();
+//		LoadingTime.loadingTime();
 
 		CheckOutPage checkOutForm = new CheckOutPage(driver);
 		checkOutForm.fillCheckOutForm();

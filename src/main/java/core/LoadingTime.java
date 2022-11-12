@@ -20,25 +20,9 @@ public class LoadingTime {
 
 		}}catch(Exception e){System.out.println("Couldn't catch the title");}
 		System.out.println("Page title is: "+ driver.getTitle());
-		long n = System.currentTimeMillis();
-		long b = n-s;
-		System.out.println("the loading time for the title is: "+b+" mSeconds");
 		try {
-			List<WebElement> load = driver.findElements(By.xpath("//img"));
-			int size = load.size()-1;
-			System.out.println("The Number of images loaded : "+size);
-			int i=0;
-
-			while((i!=size)) {
-				if(load.get(i).isEnabled()==true) {
-					i++;
-				}	
-			}
-		}catch(Exception e) {}
-		try {
-			List<WebElement> load = driver.findElements(By.xpath("//div"));
-			int size = load.size()-1;
-			System.out.println("The Number of divissions loaded : "+size);
+			List<WebElement> load = driver.findElements(By.xpath("//a"));
+			int size = (load.size())-1;
 			int i=0;
 
 			while((i!=size)) {
@@ -50,7 +34,7 @@ public class LoadingTime {
 		try {
 			List<WebElement> load = driver.findElements(By.xpath("//script"));
 			
-			int size = load.size()-1;
+			int size = (load.size())-1;
 			System.out.println("The Number of scripts loaded : "+size);
 			int i=0;
 
@@ -59,9 +43,9 @@ public class LoadingTime {
 					i++;
 				}	
 			}
-			long e = System.currentTimeMillis();
-			long f = e-s;
-			System.out.println("the loading time for the page is: "+f+ " mSeconds");
+			long v = System.currentTimeMillis();
+			long x = v-s;
+			System.out.println("the loading time for the page is: "+x+ " mSeconds");
 		}catch(Exception e) {}
 
 	}

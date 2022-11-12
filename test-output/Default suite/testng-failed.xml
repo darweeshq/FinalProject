@@ -6,6 +6,7 @@
       <class name="TestCheckOutFillingForm">
         <methods>
           <include name="beforeSuite"/>
+          <include name="fillCheckOutFormEmailTest"/>
           <include name="TestShopping"/>
           <include name="fillCheckOutFormPhoneTest"/>
           <include name="allureResults"/>

@@ -1,5 +1,7 @@
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -11,12 +13,13 @@ import io.qameta.allure.Attachment;
 import core.GoToURL;
 import core.LoadingTime;
 
-public class BaseClass {
+public class BaseClass{
 	
 		WebDriver driver;
 		ArrayList<String> outputHeaders = new ArrayList<String>();
 		ArrayList<ArrayList<String>> outputData = new ArrayList<ArrayList<String>>();
 		int ActualNumberOfItems;
+		
 
 
 
@@ -32,6 +35,7 @@ public class BaseClass {
 			GoToURL goTo = new GoToURL(driver);
 			goTo.HomePage();
 //			time.loadingTime();
+
 
 			
 			//		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
